@@ -77,6 +77,10 @@
 #include <mntent.h>
 #include <wait.h>
 
+#ifndef PAM_ENCFS_VERSION
+#error "Unknown version"
+#endif
+
 #define READ_END 0
 #define WRITE_END 1
 #define USERNAME_MAX 127

@@ -87,6 +87,7 @@
 #define PATH_MAX 256
 #define BUFSIZE ((USERNAME_MAX + 1) + ((PATH_MAX + 1) * 2))
 #define CONFIGFILE "/etc/security/pam_encfs.conf"
+#define ENCFS "/usr/bin/encfs"
 
 static void _pam_log(int err, const char *format, ...);
 static char default_encfs_options[USERNAME_MAX];
@@ -448,7 +449,7 @@ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *pamh, int flags, int argc,
      _pam_log(LOG_ERR,"  fuse       : %s %s",default_fuse_options,fuse_options);
      */
 
-  arg_pos += buildCmd(arg, arg_pos, "encfs");
+  arg_pos += buildCmd(arg, arg_pos, ENCFS);
   arg_pos += buildCmd(arg, arg_pos, "-S");
   arg_pos += buildCmd(arg, arg_pos, default_encfs_options);
   arg_pos += buildCmd(arg, arg_pos, encfs_options);
